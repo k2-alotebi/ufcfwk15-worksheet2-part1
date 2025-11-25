@@ -1,4 +1,4 @@
-OBJECTS = source/loader.o source/kmain.o source/io.o
+OBJECTS = source/loader.o source/kmain.o source/io.o drivers/framebuffer.o
 
 AS = nasm
 ASFLAGS = -f elf
@@ -21,6 +21,9 @@ source/io.o: source/io.asm
 source/kmain.o: source/kmain.c
 	$(CC) $(CFLAGS) source/kmain.c -o source/kmain.o
 
+drivers/framebuffer.o: drivers/framebuffer.c
+	$(CC) $(CFLAGS) drivers/framebuffer.c -o drivers/framebuffer.o
+
 kernel.elf: $(OBJECTS)
 	$(LD) $(LDFLAGS) $(OBJECTS) -o kernel.elf
 
@@ -40,7 +43,18 @@ os.iso: kernel.elf
 run: os.iso
 	qemu-system-i386 -nographic -boot d -cdrom os.iso -m 32 -d cpu -D logQ.txt
 
-clean:
-	rm -f source/*.o kernel.elf os.iso logQ.txt
+run-curses: os.iso
+	qemu-system-i386 -display curses \
+		-monitor telnet::55454,server,nowait \
+		-serial mon:stdio \
+		-boot d \
+		-cdrom os.iso \
+		-m 32 \
+		-d cpu \
+		-D logQ.txt
 
-.PHONY: all clean run
+clean:
+	rm -f source/*.o drivers/*.o kernel.elf os.iso logQ.txt
+
+.PHONY: all clean run run-curses
+
