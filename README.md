@@ -727,7 +727,7 @@ EAX=0000aaaa (repeated in infinite loop)
 
 ### Screenshot 3: Task 3 Evidence
 
-<img width="1272" height="138" alt="Screenshot 2025-11-25 021545" src="https://github.com/user-attachments/assets/fa026db2-cdfa-441a-90b8-b6bbeef70483" />
+<img width="1216" height="885" alt="Screenshot 2025-11-25 024725" src="https://github.com/user-attachments/assets/f41e4654-1e11-46c9-a61e-8738857f4782" />
 EAX=00000006 EBX=00000006 ECX=00000320 EDX=00000003
 
 PASS CRITERIA:
