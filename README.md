@@ -4,7 +4,7 @@
 **Student ID:** khaled2.alotebi@live.uwe.ac.uk  
 **Module:** UFCFWK-15-2 Operating Systems  
 **GitHub Repository:** https://github.com/k2-alotebi/ufcfwk15-worksheet2-part1  
-**Submission Date:** December 2024
+**Submission Date:** December 2025
 
 ---
 
@@ -174,11 +174,11 @@ grep -i "cafebabe" logQ.txt
 EAX=cafebabe EBX=0002cd80 ECX=00000001 EDX=00000000
 ```
 
-✅ **SUCCESS:** EAX contains `0xCAFEBABE` as expected!
+ **SUCCESS:** EAX contains `0xCAFEBABE` as expected!
 
 ### Screenshot 1: Task 1 Evidence
 
-**[INSERT SCREENSHOT HERE]**
+<img width="1160" height="97" alt="Screenshot 2025-11-25 021531" src="https://github.com/user-attachments/assets/2ebdd406-e81d-4dd0-aea9-67c19ec36e6b" />
 
 *Screenshot showing terminal output with `grep -i "cafebabe" logQ.txt` command and the result showing `EAX=cafebabe` in the CPU log file. This proves the bootloader successfully loaded and executed our kernel code.*
 
@@ -202,10 +202,10 @@ Extend the bootloader to establish a C runtime environment, enabling us to call 
 #### Challenge 1: No C Runtime Exists
 
 When our kernel starts:
-- ❌ No C standard library (no `printf`, `malloc`, etc.)
-- ❌ No stack (C functions need a stack)
-- ❌ No global constructors have run
-- ❌ No memory management
+-  No C standard library (no `printf`, `malloc`, etc.)
+-  No stack (C functions need a stack)
+-  No global constructors have run
+-  No memory management
 
 **We must provide everything ourselves.**
 
@@ -388,15 +388,15 @@ EAX=00000078 EBX=00000014 ECX=00000078 EDX=00000003
 ```
 
 **Verification (converting hex to decimal):**
-- **EAX = 0x78 = 120** ✅ → factorial(5) = 5! = 120
-- **EBX = 0x14 = 20** ✅ → multiply(4, 5) = 20
-- **ECX = 0x78 = 120** ✅ → factorial(5) = 120
+- **EAX = 0x78 = 120**  → factorial(5) = 5! = 120
+- **EBX = 0x14 = 20**  → multiply(4, 5) = 20
+- **ECX = 0x78 = 120**  → factorial(5) = 120
 
 All three functions computed correct results!
 
 ### Screenshot 2: Task 2 Evidence
 
-**[INSERT SCREENSHOT HERE]**
+<img width="1272" height="138" alt="Screenshot 2025-11-25 021545" src="https://github.com/user-attachments/assets/d4ac9771-1b3b-48cd-9500-92f17df83c51" />
 
 *Screenshot showing terminal with `tail -30 logQ.txt | grep "EAX\|EBX\|ECX"` command and output displaying the register values. This proves all C functions executed correctly and returned expected values.*
 
@@ -655,9 +655,7 @@ void kmain(void)
     
     /* Cyan banner on blue background */
     fb_set_color(FB_LIGHT_CYAN, FB_BLUE);
-    fb_write_string("========================================\n");
-    fb_write_string("  Welcome to Tiny OS - Worksheet 2!\n");
-    fb_write_string("========================================\n\n");
+    fb_write_string("  Welcome to Tiny OS - Worksheet 2\n");
     
     /* Test function results */
     fb_set_color(FB_LIGHT_GREEN, FB_BLACK);
@@ -725,17 +723,17 @@ void kmain(void)
 EAX=0000aaaa (repeated in infinite loop)
 ```
 
-✅ **SUCCESS:** Marker `0xAAAA` reached, proving all functions executed!
+ **SUCCESS:** Marker `0xAAAA` reached, proving all functions executed!
 
 ### Screenshot 3: Task 3 Evidence
 
-**[INSERT SCREENSHOT HERE - Option A: Execution Trace]**
+<img width="1272" height="138" alt="Screenshot 2025-11-25 021545" src="https://github.com/user-attachments/assets/fa026db2-cdfa-441a-90b8-b6bbeef70483" />
+EAX=00000006 EBX=00000006 ECX=00000320 EDX=00000003
 
-*Screenshot showing the execution trace test output with `EAX=0000aaaa` marker, proving all framebuffer functions executed without crashing. Each marker (0x1111, 0x2222, etc.) represents a successful function call.*
-
-**OR**
-
-**[INSERT SCREENSHOT HERE - Option B: QEMU Display]**
+PASS CRITERIA:
+EAX = 0x00000005 (5 framebuffer functions executed)
+EBX = 0x00000006 (sum_of_three works)
+<img width="621" height="313" alt="Screenshot 2025-11-25 022829" src="https://github.com/user-attachments/assets/2d9618ae-4fa8-4f3e-8709-4227ebf00e47" />
 
 *Screenshot of QEMU window showing the actual colored text output with the welcome banner, function results, and colored text demonstrations. This would be captured if running QEMU with graphical display or VNC.*
 
@@ -860,7 +858,7 @@ grep -i "cafebabe" logQ.txt
 EAX=cafebabe EBX=... ECX=... EDX=...
 ```
 
-✅ **Pass criteria:** EAX contains `cafebabe`
+ **Pass criteria:** EAX contains `cafebabe`
 
 ---
 
@@ -879,11 +877,11 @@ EAX=00000078 EBX=00000014 ECX=00000078
 ```
 
 **Verification:**
-- EAX = 0x78 = 120 → factorial(5) = 5! ✅
-- EBX = 0x14 = 20 → multiply(4,5) ✅
-- ECX = 0x78 = 120 → factorial(5) ✅
+- EAX = 0x78 = 120 → factorial(5) = 5! 
+- EBX = 0x14 = 20 → multiply(4,5) 
+- ECX = 0x78 = 120 → factorial(5) 
 
-✅ **Pass criteria:** All three values correct
+ **Pass criteria:** All three values correct
 
 ---
 
@@ -911,7 +909,7 @@ grep "0000aaaa" logQ.txt
 
 **Expected:** Lines showing `EAX=0000aaaa`
 
-✅ **Pass criteria:** Final marker (0xAAAA) reached
+ **Pass criteria:** Final marker (0xAAAA) reached
 
 #### Method B: Visual Verification
 ```bash
@@ -920,7 +918,7 @@ make run-curses
 # Observe colored text output
 ```
 
-✅ **Pass criteria:** See colored text, correct positioning, numbers displayed
+ **Pass criteria:** See colored text, correct positioning, numbers displayed
 
 ---
 
@@ -1161,10 +1159,10 @@ void fb_write_string(char *str) {
 
 This project successfully demonstrates the fundamentals of operating system development from scratch. All four tasks have been completed and verified:
 
-✅ **Task 1 (20%):** Bootloader implemented with multiboot compliance  
-✅ **Task 2 (20%):** C runtime environment established, functions working  
-✅ **Task 3 (40%):** Complete framebuffer driver with full API  
-✅ **Task 4 (20%):** Comprehensive documentation with evidence
+ **Task 1 (20%):** Bootloader implemented with multiboot compliance  
+ **Task 2 (20%):** C runtime environment established, functions working  
+ **Task 3 (40%):** Complete framebuffer driver with full API  
+ **Task 4 (20%):** Comprehensive documentation with evidence
 
 The kernel successfully boots, executes C code, and provides text output capabilities - forming the foundation for more advanced OS features in Part 2.
 
@@ -1179,9 +1177,8 @@ The kernel successfully boots, executes C code, and provides text output capabil
 ---
 
 **Repository:** https://github.com/k2-alotebi/ufcfwk15-worksheet2-part1  
-**Submission Date:** December 2024  
+**Submission Date:** December 2025  
 **Status:** Complete and ready for viva demonstration
 
 ---
 
-*End of README*
