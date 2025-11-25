@@ -1,6 +1,0 @@
-*.o
-*.elf
-*.iso
-logQ.txt
-source/*.o
-drivers/*.o
