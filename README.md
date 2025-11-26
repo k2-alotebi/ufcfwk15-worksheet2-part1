@@ -44,6 +44,7 @@ grep "EAX=cafebabe" logQ.txt
 ```
 
 **Screenshot:**
+<img width="1261" height="281" alt="Screenshot 2025-11-26 022145" src="https://github.com/user-attachments/assets/aa61aad7-f091-4e51-afc3-bd2366823492" />
 
 The log shows `EAX=cafebabe` repeated multiple times, proving the kernel executed successfully.
 ```
@@ -104,9 +105,11 @@ tail -20 logQ.txt | grep "EAX"
 EAX=00000006 EBX=00000023 ECX=00000006
 ```
 
-- EAX = 6 (1+2+3) ✓
-- EBX = 0x23 = 35 (5×7) ✓
-- ECX = 6 (10-4) ✓
+- EAX = 6 (1+2+3) 
+- EBX = 0x23 = 35 (5×7) 
+- ECX = 6 (10-4) 
+
+<img width="1059" height="835" alt="Screenshot 2025-11-26 022547" src="https://github.com/user-attachments/assets/2b807a46-f333-4283-b765-72135528e085" />
 
 ---
 
@@ -196,6 +199,8 @@ Framebuffer test complete!
 ```
 
 ### Screenshots
+<img width="1102" height="986" alt="image" src="https://github.com/user-attachments/assets/38971a23-27ed-45dc-86b8-df9abd258872" />
+<img width="609" height="260" alt="image" src="https://github.com/user-attachments/assets/251bcc51-c15c-4607-a1fd-084391dae974" />
 
 **Build Output:**
 ```
