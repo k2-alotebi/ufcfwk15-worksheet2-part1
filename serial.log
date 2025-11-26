@@ -1,0 +1,5 @@
+Hello from Tiny OS via serial!
+Framebuffer driver is working!
+Moved cursor to (10, 5)
+Wrote COLORS in different colors at row 10
+Framebuffer test complete!

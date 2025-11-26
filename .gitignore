@@ -1,0 +1,8 @@
+*.o
+*.elf
+*.iso
+logQ.txt
+iso/boot/kernel.elf
+.DS_Store
+*~
+*.swp

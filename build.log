@@ -1,0 +1,18 @@
+nasm -f elf source/loader.asm -o source/loader.o
+gcc -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c source/kmain.c -o source/kmain.o
+nasm -f elf drivers/io.s -o drivers/io.o
+gcc -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c drivers/fb.c -o drivers/fb.o
+ld -T source/link.ld -melf_i386 source/loader.o source/kmain.o drivers/io.o drivers/fb.o -o kernel.elf
+ld: warning: drivers/io.o: missing .note.GNU-stack section implies executable stack
+ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+cp kernel.elf iso/boot/kernel.elf
+genisoimage -R \
+	-b boot/grub/stage2_eltorito \
+	-no-emul-boot \
+	-boot-load-size 4 \
+	-A os \
+	-input-charset utf8 \
+	-quiet \
+	-boot-info-table \
+	-o os.iso \
+	iso
