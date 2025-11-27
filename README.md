@@ -223,24 +223,24 @@ Framebuffer driver is working!
 ## Project Structure
 ```
 worksheet2/
-├── Makefile              # Build automation
-├── README.md             # This file
+├── Makefile            
+├── README.md         
 ├── drivers/
-│   ├── fb.c             # Framebuffer driver implementation
-│   ├── fb.h             # Framebuffer driver interface
-│   ├── io.h             # I/O port interface
-│   └── io.s             # I/O port assembly implementation
+│   ├── fb.c           
+│   ├── fb.h           
+│   ├── io.h         
+│   └── io.s           
 ├── iso/
 │   └── boot/
 │       ├── grub/
-│       │   ├── menu.lst           # GRUB config
-│       │   └── stage2_eltorito    # GRUB bootloader
-│       └── kernel.elf             # Compiled kernel
+│       │   ├── menu.lst         
+│       │   └── stage2_eltorito    
+│       └── kernel.elf        
 ├── source/
-│   ├── kmain.c          # C kernel code
-│   ├── link.ld          # Linker script
-│   └── loader.asm       # Assembly bootloader
-└── os.iso               # Bootable ISO image
+│   ├── kmain.c         
+│   ├── link.ld       
+│   └── loader.asm      
+└── os.iso             
 ```
 
 ---
@@ -249,34 +249,34 @@ worksheet2/
 
 ### Makefile Targets
 ```bash
-make          # Build os.iso
-make clean    # Remove all build artifacts
-make run      # Run in QEMU (3 second timeout)
-make stop     # Stop any running QEMU instances
-make viewlog  # View serial output log
+make         
+make clean   
+make run      
+make stop    
+make viewlog  
 ```
 
 ### Compilation Flags
 
 **GCC (C Compiler):**
 ```
--m32                  # 32-bit target
--nostdlib             # No standard library
--nostdinc             # No standard includes
--fno-builtin          # No builtin functions
--fno-stack-protector  # No stack protection
--Wall -Wextra -Werror # All warnings as errors
+-m32                 
+-nostdlib           
+-nostdinc            
+-fno-builtin         
+-fno-stack-protector 
+-Wall -Wextra -Werror 
 ```
 
 **NASM (Assembler):**
 ```
--f elf                # ELF32 object format
+-f elf                
 ```
 
 **LD (Linker):**
 ```
--T source/link.ld     # Custom linker script
--melf_i386            # 32-bit x86 ELF
+-T source/link.ld    
+-melf_i386          
 ```
 
 ---
